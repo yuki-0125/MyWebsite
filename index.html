@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>へちゃん | ポートフォリオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            cursor: crosshair;
+        }
+        .blueprint-bg {
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .hover-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0px 0px #000;
+        }
+        .transition-all {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        /* モード切替のスタイル */
+        .draft-mode .bg-white { background-color: #f0f0f0; }
+        .draft-mode .profile-img { filter: grayscale(1) contrast(1.1); }
+        .draft-mode .blueprint-bg { background-image: linear-gradient(to right, rgba(0,0,0,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.1) 1px, transparent 1px); }
+
+        /* 詳細表示のスタイル */
+        .hobby-detail {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.3s;
+            opacity: 0;
+        }
+        .hobby-card.active .hobby-detail {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-white text-black blueprint-bg min-h-screen overflow-x-hidden">
+
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center mix-blend-difference text-white">
+        <div class="font-black text-2xl tracking-tighter italic">へちゃん.</div>
+        <div class="space-x-6 text-xs font-bold uppercase tracking-[0.2em] hidden md:flex">
+            <a href="#about" class="hover:opacity-60 transition-opacity">について</a>
+            <a href="#profile" class="hover:opacity-60 transition-opacity">ぷろふぃーる</a>
+            <a href="#hobbies" class="hover:opacity-60 transition-opacity">しゅみ</a>
+        </div>
+    </nav>
+
+    <header class="h-screen flex flex-col justify-center items-center relative px-6 overflow-hidden border-b border-black">
+        <div class="absolute top-1/4 left-10 md:left-20 opacity-5 font-black text-[12rem] md:text-[22rem] leading-none select-none pointer-events-none italic">
+            へちゃん<br>ポートフォリオ
+        </div>
+        
+        <div class="relative z-10 text-center">
+            <div class="inline-block bg-black text-white px-4 py-1 mb-6 text-[10px] font-black tracking-[0.3em] uppercase">
+                法政大学 デザイン工学部 建築学科
+            </div>
+            <h1 class="text-7xl md:text-9xl font-black tracking-tighter mb-4 italic">
+                へちゃん
+            </h1>
+            <p class="text-lg md:text-xl font-bold max-w-lg mx-auto leading-relaxed tracking-tight">
+                東京生まれ、建築学科。ENFPの熱量で、<br>
+                「広く浅く」をクリエイティブの武器にする。
+            </p>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 floating opacity-30">
+            <p class="text-[10px] font-black tracking-widest uppercase mb-2 text-center">スクロール</p>
+            <div class="w-[2px] h-12 bg-black mx-auto"></div>
+        </div>
+    </header>
+
+    <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="relative group">
+                <div class="aspect-[3/4] bg-zinc-100 rounded-[2rem] border-2 border-black hover-card transition-all overflow-hidden">
+                    <img src="6066D814-02E9-48BF-8E80-AC884E28C123.jpg" alt="へちゃんの写真" class="w-full h-full object-cover profile-img">
+                </div>
+                <div class="absolute -bottom-8 -right-4 bg-white border-2 border-black px-8 py-4 rounded-xl hidden md:block rotate-3 group-hover:rotate-0 transition-all">
+                    <p class="font-black text-xl italic tracking-tighter uppercase">I'm a Builder.</p>
+                </div>
+            </div>
+            <div class="space-y-8">
+                <h2 class="text-5xl font-black italic leading-none tracking-tighter uppercase">
+                    体験を<br><span class="underline decoration-2 underline-offset-8 text-black">設計する。</span>
+                </h2>
+                <p class="text-lg leading-relaxed font-medium text-zinc-800">
+                    法政大学で建築を専攻。建物そのものだけでなく、そこに生まれる「物語」や「遊び心」を設計したいと考えています。多趣味であることは、多角的な視点を持つこと。
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <div class="px-5 py-2 bg-white border-2 border-black rounded-lg font-black text-xs shadow-[4px_4px_0px_0px_#000]">設計</div>
+                    <div class="px-5 py-2 bg-white border-2 border-black rounded-lg font-black text-xs shadow-[4px_4px_0px_0px_#000]">法政建築</div>
+                    <div class="px-5 py-2 bg-white border-2 border-black rounded-lg font-black text-xs shadow-[4px_4px_0px_0px_#000]">ENFP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="profile" class="py-24 bg-black text-white rounded-[3rem] mx-4 md:mx-10 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <h2 class="text-4xl font-black mb-20 italic uppercase tracking-tighter">プロフィール</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="border-l-2 border-zinc-500 pl-8">
+                    <p class="text-zinc-400 font-black mb-2 uppercase text-[10px] tracking-[0.3em]">誕生日</p>
+                    <h3 class="text-4xl font-black italic tracking-tight">2006.01.25</h3>
+                </div>
+                <div class="border-l-2 border-zinc-500 pl-8">
+                    <p class="text-zinc-400 font-black mb-2 uppercase text-[10px] tracking-[0.3em]">性格診断</p>
+                    <h3 class="text-4xl font-black italic uppercase">ENFP-A</h3>
+                    <p class="text-zinc-500 mt-2 font-bold text-sm">広報運動家 / 自由な精神</p>
+                </div>
+                <div class="border-l-2 border-zinc-500 pl-8">
+                    <p class="text-zinc-400 font-black mb-2 uppercase text-[10px] tracking-[0.3em]">出身</p>
+                    <h3 class="text-4xl font-black italic uppercase">東京</h3>
+                </div>
+            </div>
+        </div>
+        <div class="absolute right-[-5%] bottom-[-10%] opacity-10 font-black text-[15rem] italic select-none pointer-events-none">
+            0125
+        </div>
+    </section>
+
+    <section id="hobbies" class="py-24 px-6 max-w-5xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <h2 class="text-4xl font-black italic uppercase tracking-tighter">しゅみ</h2>
+            <p class="text-zinc-400 font-black text-[10px] uppercase tracking-widest italic">カードを押してみてね</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-black">
+            <!-- Game -->
+            <div onclick="this.classList.toggle('active')" class="hobby-card bg-zinc-50 p-10 rounded-[2rem] border-2 border-black hover-card transition-all cursor-pointer text-center group">
+                <span class="text-5xl mb-4 block group-hover:scale-110 transition-transform">🎮</span>
+                <span class="font-black text-lg tracking-widest uppercase">Game</span>
+                <div class="hobby-detail">
+                    <p class="text-xs font-bold text-zinc-400 uppercase mb-1">最近の流行り</p>
+                    <p class="font-black text-xl">リトルナイトメア3</p>
+                </div>
+            </div>
+            <!-- Anime -->
+            <div onclick="this.classList.toggle('active')" class="hobby-card bg-zinc-50 p-10 rounded-[2rem] border-2 border-black hover-card transition-all cursor-pointer text-center group">
+                <span class="text-5xl mb-4 block group-hover:scale-110 transition-transform">🎬</span>
+                <span class="font-black text-lg tracking-widest uppercase">Anime</span>
+                <div class="hobby-detail">
+                    <p class="text-xs font-bold text-zinc-400 uppercase mb-1">推し</p>
+                    <p class="font-black text-xl">推しの子</p>
+                </div>
+            </div>
+            <!-- Karaoke -->
+            <div onclick="this.classList.toggle('active')" class="hobby-card bg-zinc-50 p-10 rounded-[2rem] border-2 border-black hover-card transition-all cursor-pointer text-center group">
+                <span class="text-5xl mb-4 block group-hover:scale-110 transition-transform">🎤</span>
+                <span class="font-black text-lg tracking-widest uppercase">Karaoke</span>
+                <div class="hobby-detail">
+                    <p class="text-xs font-bold text-zinc-400 uppercase mb-1">十八番</p>
+                    <p class="font-black text-xl">ハナミズキ</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 text-center border-t border-black/5">
+        <a href="https://www.instagram.com/ihechan_0125" target="_blank" class="inline-block group">
+            <p class="text-[10px] font-black tracking-[0.5em] text-zinc-400 uppercase mb-4 group-hover:text-black transition-colors italic">Follow Me on Instagram</p>
+            <h2 class="text-4xl md:text-6xl font-black italic tracking-tighter group-hover:scale-105 transition-transform underline decoration-2 underline-offset-8">@ihechan_0125</h2>
+        </a>
+    </section>
+
+    <footer class="py-16 px-6 text-center bg-zinc-50 border-t border-black">
+        <button onclick="toggleDraft()" id="draftToggle" class="mb-8 text-[10px] font-black px-10 py-4 bg-black text-white rounded-full hover:scale-105 transition-all uppercase tracking-[0.3em] shadow-xl">
+            下書きモードに切り替え
+        </button>
+        <p class="font-black text-[10px] tracking-[0.4em] opacity-30 uppercase italic">© へちゃん / 法政大学 建築学科</p>
+    </footer>
+
+    <script>
+        function toggleDraft() {
+            document.body.classList.toggle('draft-mode');
+            const btn = document.getElementById('draftToggle');
+            if (document.body.classList.contains('draft-mode')) {
+                btn.innerText = '完成版に戻す';
+                btn.style.backgroundColor = '#52525b';
+            } else {
+                btn.innerText = '下書きモードに切り替え';
+                btn.style.backgroundColor = '#000';
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroText = document.querySelector('.absolute.opacity-5');
+            if (heroText) {
+                heroText.style.transform = `translateY(${scrolled * 0.1}px) rotate(${-scrolled * 0.02}deg)`;
+            }
+        });
+    </script>
+</body>
+</html>
